@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -17,10 +19,13 @@ public class User {
     private Long id;
     private String username;
     private String password;
+    private String name;
+    private String birth;
     private String email;
     private String phoneNumber;
     private String firstName;
     private String lastName;
+
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "street", column = @Column(name = "street_name")),
@@ -28,8 +33,14 @@ public class User {
             @AttributeOverride(name = "state", column = @Column(name ="state_name"))
     })
     private Address address;
+
+    //Each user has several posts.
+    @OneToMany
+    private Set<Post> posts = new HashSet<Post>();
+
     @OneToOne
     private Role role;
+
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date created;
 }
