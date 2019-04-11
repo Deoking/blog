@@ -1,18 +1,20 @@
 package io.deoki.blog.repository;
 
 import io.deoki.blog.entity.User;
+import io.deoki.blog.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest
 public class UserRepositoryTest {
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @Test
     public void crud() {
@@ -20,6 +22,6 @@ public class UserRepositoryTest {
         user.setLastName("test Last name");
         user.setFirstName("test First Name");
 
-        userRepository.save(user);
+        userService.save(user);
     }
 }

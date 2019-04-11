@@ -10,6 +10,7 @@ import java.util.Date;
 @Entity
 @Setter
 @Getter
+@Table(name = "login_histories")
 public class Login {
     @Id @GeneratedValue
     @Setter(AccessLevel.NONE)
