@@ -10,27 +10,27 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class UserService {
 
-    UserRepository userRepository;
-    LoginRepository loginRepository;
+    UserRepository users;
+    LoginRepository logins;
 
     public User save(User user){
-        return userRepository.save(user);
+        return users.save(user);
     }
 
     public User findById(Long id){
-        return userRepository.findById(id).orElse(null);
+        return users.findById(id).orElse(null);
     }
 
     public boolean existsById(Long id){
-        return userRepository.existsById(id);
+        return users.existsById(id);
     }
 
     public void delete(Long id){
-        userRepository.deleteById(id);
+        users.deleteById(id);
     }
 
     public void delete(User user){
-        userRepository.delete(user);
+        users.delete(user);
     }
 
 }

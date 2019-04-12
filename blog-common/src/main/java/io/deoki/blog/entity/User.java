@@ -42,5 +42,5 @@ public class User {
     private Role role;
 
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date created;
+    private Date created = new Date();
 }

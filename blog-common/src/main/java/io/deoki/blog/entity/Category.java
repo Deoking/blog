@@ -9,6 +9,11 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Category entity to which blog posts belong. Each category can have a subcategory.
+ * @author deoki
+ * @version 1.0
+ */
 @Entity
 @Setter
 @Getter

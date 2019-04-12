@@ -9,6 +9,13 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * The entity that defined the blog post.
+ * Post-entity is linked to one user entity and one category entity.
+ * @author deoki
+ * @version 1.0
+ */
+
 @Entity
 @Setter
 @Getter

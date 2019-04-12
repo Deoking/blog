@@ -7,6 +7,11 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * History entity to store the log-in histories of the authors.
+ * @author deoki
+ * @version 1.0
+ */
 @Entity
 @Setter
 @Getter

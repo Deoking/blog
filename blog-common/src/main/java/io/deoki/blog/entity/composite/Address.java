@@ -6,8 +6,9 @@ import lombok.Setter;
 import javax.persistence.Embeddable;
 
 /**
- * Composite value class for address mapping
- * used in User entity.
+ * This is a composite value class that represents the address in User Entity class.
+ * @author deoki
+ * @version 1.0
  */
 @Embeddable
 @Setter
