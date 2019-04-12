@@ -39,7 +39,7 @@ public class Post {
 
     //Each post has one author.
     @ManyToOne
-    private User author;
+    private Account author;
 
     @OneToMany
     private Set<Tag> tags = new HashSet<Tag>();

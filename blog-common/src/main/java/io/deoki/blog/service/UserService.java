@@ -1,6 +1,6 @@
 package io.deoki.blog.service;
 
-import io.deoki.blog.entity.User;
+import io.deoki.blog.entity.Account;
 import io.deoki.blog.repository.LoginRepository;
 import io.deoki.blog.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -13,11 +13,11 @@ public class UserService {
     UserRepository users;
     LoginRepository logins;
 
-    public User save(User user){
-        return users.save(user);
+    public Account save(Account account){
+        return users.save(account);
     }
 
-    public User findById(Long id){
+    public Account findById(Long id){
         return users.findById(id).orElse(null);
     }
 
@@ -29,8 +29,8 @@ public class UserService {
         users.deleteById(id);
     }
 
-    public void delete(User user){
-        users.delete(user);
+    public void delete(Account account){
+        users.delete(account);
     }
 
 }

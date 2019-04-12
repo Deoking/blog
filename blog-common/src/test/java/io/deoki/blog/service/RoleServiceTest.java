@@ -1,7 +1,7 @@
 package io.deoki.blog.service;
 
-import io.deoki.blog.entity.Permission;
 import io.deoki.blog.entity.Role;
+import io.deoki.blog.entity.Permission;
 import io.deoki.blog.util.attribute.PermissionType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +20,7 @@ public class RoleServiceTest {
 
     @Test
     public void crud() {
+
         Role role1 = new Role();
         role1.setName("administrator");
 
@@ -45,6 +46,8 @@ public class RoleServiceTest {
         role1.getPermissions().add(permission4);
 
         roleService.saveRole(role1);
+
+        role1.getPermissions().remove(permission1);
 
         List<Role> roleAll = roleService.findRoleAll();
 

@@ -11,5 +11,5 @@ dependencies {
     implementation 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.47'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '9.4.1212'
 }

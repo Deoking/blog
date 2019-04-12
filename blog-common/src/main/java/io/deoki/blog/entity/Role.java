@@ -22,10 +22,17 @@ import java.util.Set;
 public class Role {
     @Id @GeneratedValue
     @Setter(AccessLevel.NONE)
+
     private Long id;
+
     private String name;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Permission> permissions = new HashSet<Permission>();
+
+    @OneToMany(mappedBy = "role")
+    private Set<Account> accounts = new HashSet<Account>();
+
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date create = new Date();
+    private Date created = new Date();
 }

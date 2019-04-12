@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-public class User {
+public class Account {
     @Id @GeneratedValue
     @Setter(AccessLevel.NONE)
     private Long id;
@@ -38,7 +38,7 @@ public class User {
     @OneToMany
     private Set<Post> posts = new HashSet<Post>();
 
-    @OneToOne
+    @ManyToOne
     private Role role;
 
     @Temporal(value = TemporalType.TIMESTAMP)

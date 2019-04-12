@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.Embeddable;
 
 /**
- * This is a composite value class that represents the address in User Entity class.
+ * This is a composite value class that represents the address in Account Entity class.
  * @author deoki
  * @version 1.0
  */

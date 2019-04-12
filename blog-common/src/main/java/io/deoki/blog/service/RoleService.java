@@ -1,7 +1,7 @@
 package io.deoki.blog.service;
 
-import io.deoki.blog.entity.Permission;
 import io.deoki.blog.entity.Role;
+import io.deoki.blog.entity.Permission;
 import io.deoki.blog.repository.PermissionRepository;
 import io.deoki.blog.repository.RoleRepository;
 import lombok.AllArgsConstructor;
@@ -126,7 +126,7 @@ public class RoleService {
      * @return savedRole
      */
     @Transactional
-    public  Role saveRoleWithPermission(Role role, Permission... permissionArray) {
+    public Role saveRoleWithPermission(Role role, Permission... permissionArray) {
         logger.debug("Create Role named '{}' ....", role.getName());
 
         Set<Permission> permissionSet = new HashSet<Permission>();
