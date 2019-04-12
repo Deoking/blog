@@ -10,6 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Set;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -20,7 +23,7 @@ public class RoleServiceTest {
 
     @Test
     public void crud() {
-
+        //given
         Role role1 = new Role();
         role1.setName("administrator");
 
@@ -44,10 +47,30 @@ public class RoleServiceTest {
         role1.getPermissions().add(permission2);
         role1.getPermissions().add(permission3);
         role1.getPermissions().add(permission4);
+        
+        //when
+        Role saveRole = roleService.saveRole(role1);
 
-        roleService.saveRole(role1);
+        //then
+        Set<Permission> permissions = saveRole.getPermissions();
+        //saveRole의 Permission 갯수는 4개
+        assertThat(permissions.size()).isEqualTo(4);
+        //DB에 저장된 Permission 갯수도 4개
+        assertThat(roleService.findPermissionAll().size()).isEqualTo(4);
 
-        role1.getPermissions().remove(permission1);
+        System.out.println("********************* Saved Permissions *********************");
+        permissions.forEach(permission -> {
+            System.out.println(permission.getName());
+        });
+
+        //when
+        //persist 상태의 role에서 1번 permission을 삭제하면
+        saveRole.getPermissions().remove(permission1);
+
+        //then
+        assertThat(roleService.findPermissionAll().size()).isEqualTo(3);
+
+
 
         List<Role> roleAll = roleService.findRoleAll();
 
