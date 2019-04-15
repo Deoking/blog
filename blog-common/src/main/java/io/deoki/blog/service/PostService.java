@@ -1,5 +1,6 @@
 package io.deoki.blog.service;
 
+import io.deoki.blog.entity.Comment;
 import io.deoki.blog.entity.Post;
 import io.deoki.blog.repository.CommentRepository;
 import io.deoki.blog.repository.PostRepository;
@@ -35,6 +36,14 @@ public class PostService {
      */
     public List<Post> findPostAll(){
         return posts.findAll();
+    }
+
+    public Comment findCommentById(Long id){
+        return comments.findById(id).orElse(null);
+    }
+
+    public Comment findCommentAllByPostId(Long id){
+        return comments.findById(id).orElse(null);
     }
 
     public Post savePost (Post post) {
