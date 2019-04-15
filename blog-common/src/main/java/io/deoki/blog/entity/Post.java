@@ -41,6 +41,6 @@ public class Post {
     @ManyToOne
     private Account author;
 
-    @OneToMany
+    @OneToMany(mappedBy = "post")
     private Set<Tag> tags = new HashSet<Tag>();
 }

@@ -108,8 +108,7 @@ public class RoleService {
      * @param permissionList
      * @return savedPermisions
      */
-    public List<Permission> savePermissions(List<Permission> permissionList){
-        logger.debug("Create the list of permissions. - size :  '{}'", permissionList.size());
+    public List<Permission> savePermissions(Iterable<Permission> permissionList){
         List<Permission> savedPermisions = permissions.saveAll(permissionList);
 
         savedPermisions.forEach(permission -> {

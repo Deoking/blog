@@ -22,6 +22,7 @@ public class Permission {
     @Setter(AccessLevel.NONE)
     private Long id;
 
+    @Column(unique = true, length = 100, updatable = false)
     private String name;
     /**
      *  Specify the status of the permission.

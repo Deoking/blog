@@ -3,10 +3,7 @@ package io.deoki.blog.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,7 +15,7 @@ public class Tag {
     private Long id;
     private String name;
 
-    @OneToMany
-    private Set<Post> posts = new HashSet<Post>();
+    @ManyToOne
+    private Post post;
 
 }

@@ -27,7 +27,7 @@ public class Role {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Permission> permissions = new HashSet<Permission>();
 
     @OneToMany(mappedBy = "role")

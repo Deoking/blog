@@ -19,7 +19,6 @@ public class Account {
     private Long id;
     private String username;
     private String password;
-    private String name;
     private String birth;
     private String email;
     private String phoneNumber;
