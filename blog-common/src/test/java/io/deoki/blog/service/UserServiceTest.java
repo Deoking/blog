@@ -4,17 +4,16 @@ import io.deoki.blog.entity.Account;
 import io.deoki.blog.entity.Permission;
 import io.deoki.blog.entity.Role;
 import io.deoki.blog.entity.composite.Address;
-import io.deoki.blog.util.attribute.PermissionType;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.HashSet;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,15 +27,11 @@ public class UserServiceTest {
     @Autowired
     RoleService roleService;
 
-    // Create role for user crud test.
-    @Before
-    public void saveRole(){
-
-
-        System.out.println("Before test completed.");
-    }
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Test
+    @Transactional
     public void createAccount() {
         Account account = new Account();
         //Account settings.
@@ -58,20 +53,23 @@ public class UserServiceTest {
         account.setAddress(address);
         account.setAddress(address);
 
+        //role settings
         Role role = new Role();
         role.setName("Administrator");
-
         HashSet<Permission> permissionSet = new HashSet<Permission>(roleService.findPermissionAll());
-
         role.setPermissions(permissionSet);
-
-//        Role saveRole = roleService.saveRole(role);
-//        Account savedAccount = userService.saveAccount(account);
 
         account.setRole(role);
         role.getAccounts().add(account);
 
-        roleService.saveRole(role);
-        userService.saveAccount(account);
+        //save -> persist state.
+        Role savedRole = roleService.saveRole(role);
+        Account savedAccount = userService.saveAccount(account);
+
+        //persist?
+        assertThat(entityManager.contains(savedAccount)).isTrue();
+
+        //dirty checking.
+        savedAccount.setLastName("test");
     }
 }

@@ -42,4 +42,9 @@ public class Account {
 
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date created = new Date();
+
+    public void addPost(Post post){
+        this.getPosts().add(post);
+        post.setAuthor(this);
+    }
 }

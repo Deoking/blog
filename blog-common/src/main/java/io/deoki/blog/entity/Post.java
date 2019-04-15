@@ -43,4 +43,17 @@ public class Post {
 
     @OneToMany(mappedBy = "post")
     private Set<Tag> tags = new HashSet<Tag>();
+
+    @OneToMany(mappedBy = "post")
+    private Set<Comment> comments = new HashSet<Comment>();
+
+    public void addTags(Tag tag) {
+        this.getTags().add(tag);
+        tag.setPost(this);
+    }
+
+    public void addComment(Comment comment) {
+        this.getComments().add(comment);
+        comment.setPost(this);
+    }
 }
