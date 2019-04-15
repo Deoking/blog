@@ -42,13 +42,19 @@ public class PostService {
         return comments.findById(id).orElse(null);
     }
 
-    public Comment findCommentAllByPostId(Long id){
-        return comments.findById(id).orElse(null);
+    public List<Comment> findCommentsByPost(Long id){
+        return comments.findCommentsByPostId(id);
     }
 
     public Post savePost (Post post) {
         Post savedPost = posts.save(post);
         return savedPost;
+    }
+
+    public List<Comment> saveComments(Iterable<Comment> commentIterable){
+        List<Comment> savedComments = this.comments.saveAll(commentIterable);
+
+        return savedComments;
     }
 
 }
