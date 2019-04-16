@@ -11,7 +11,7 @@ public class UserApiService {
     UserService userService;
 
     public Account saveUser(Account account){
-        return userService.save(account);
+        return userService.saveAccount(account);
     }
 
 }

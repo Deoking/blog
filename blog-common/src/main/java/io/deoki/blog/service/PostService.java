@@ -33,17 +33,35 @@ public class PostService {
 
     /**
      * Finds all existing Post(s).
+     * @return posts
      */
     public List<Post> findPostAll(){
         return posts.findAll();
     }
 
+    /**
+     * Find one Comment by comment id.
+     * @return comment
+     */
     public Comment findCommentById(Long id){
         return comments.findById(id).orElse(null);
     }
 
+    /**
+     * Finds all existing Comment(s) by post id.
+     * @param id
+     * @return comments
+     */
     public List<Comment> findCommentsByPost(Long id){
         return comments.findCommentsByPostId(id);
+    }
+
+    /**
+     * Find five comments that have been recently created.
+     * @return comments
+     */
+    public List<Comment> findTop5CommentByCreatedOrderByCreatedDesc(){
+        return comments.findTop5CommentsByOrderByCreatedDesc();
     }
 
     public Post savePost (Post post) {

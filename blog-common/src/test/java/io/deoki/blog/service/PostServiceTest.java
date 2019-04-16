@@ -35,8 +35,24 @@ public class PostServiceTest {
         Comment comment2 = new Comment();
         comment2.setContent("testComment2");
 
+        Comment comment3 = new Comment();
+        comment3.setContent("testComment3");
+
+        Comment comment4 = new Comment();
+        comment4.setContent("testComment4");
+
+        Comment comment5 = new Comment();
+        comment5.setContent("testComment5");
+
+        Comment comment6 = new Comment();
+        comment6.setContent("testComment6");
+
         post.addComment(comment1);
         post.addComment(comment2);
+        post.addComment(comment3);
+        post.addComment(comment4);
+        post.addComment(comment5);
+        post.addComment(comment6);
 
         Post post1 = postService.savePost(post);
         postService.saveComments(post1.getComments());
@@ -47,9 +63,9 @@ public class PostServiceTest {
     @Test
     public void getComments(){
 
-        List<Comment> commentsByPost = postService.findCommentsByPost(10L);
+        List<Comment> commentsByPost = postService.findTop5CommentByCreatedOrderByCreatedDesc();
 
-        commentsByPost.forEach(comment -> System.out.println(comment));
+        commentsByPost.forEach(comment -> System.out.println(comment.getContent()));
     }
 
 }
