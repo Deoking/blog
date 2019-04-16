@@ -13,7 +13,7 @@ dependencies {
 
     //query dsl settings.
     implementation "com.querydsl:querydsl-jpa:$rootProject.ext.querydslVersion"
-    annotationProcessor( "com.querydsl:querydsl-apt:$rootProject.ext.querydslVersion:jpa", "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final", "javax.annotation:javax.annotation-api:1.3.2", "org.projectlombok:lombok" )
+    annotationProcessor( "com.querydsl:querydsl-apt:$rootProject.ext.querydslVersion:jpa", "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final", "org.projectlombok:lombok" )
 }
 
 def querydslSrcDir = 'src/main/generated' // QClass 생성 위치
